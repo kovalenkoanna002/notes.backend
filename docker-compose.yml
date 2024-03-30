@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: NotesDB
+
+  notes-api:
+    image: notes-api
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
